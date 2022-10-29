@@ -25,22 +25,42 @@ const defaultData: Row[] = [
     button: "",
     colours: ["black","black","black","black","black","black","red","black","black",],
   },
+  {
+    button: "",
+    colours: ["black","black","black","black","black","black","black","black","black",],
+  },
 ];
 
 const columnHelper = createColumnHelper<Row>();
 
-const Home: NextPage = () => {
+const Instructions: NextPage = () => {
+  const [showTest, setShowTest] = React.useState(false)
+  
+  function startTest(test_id: number) {
+    setShowTest(true);
+  }
+
+  return (
+    <div className="instructions">
+      <button onClick={() => startTest(0)} className="button">Start Test</button>
+
+      { showTest ? <Table /> : null }
+    </div>
+  );
+}
+
+const Table: NextPage = () => {
   const [data, setData] = React.useState(() => [...defaultData]);
   const [rowSelected, setRow] = React.useState(-2);
-  const rerender = React.useReducer(() => ({}), {})[1];
 
-  function handleClick(row: any) {
+  function endTest(row: number) {
     setRow(row);
+    // TODO: load next test
   }
 
   const columns = [
       columnHelper.accessor("button", {
-        cell: (info) => <button onClick={() => handleClick(info.row.id)}>Select</button>,
+        cell: (info) => <button onClick={() => endTest(info.row.index)}>Select</button>,
       }),
       columnHelper.accessor("colours", {
         cell: (info) => {
@@ -62,7 +82,7 @@ const Home: NextPage = () => {
 
   return (
     // <div className={styles.container}>
-    <div className="p-2">
+    <div className="table">
       <table>
         <tbody>
           {table.getRowModel().rows.map((row) => (
@@ -76,11 +96,11 @@ const Home: NextPage = () => {
           ))}
         </tbody>
       </table>
-      <button onClick={() => handleClick(-1)} className="border p-2">
+      <button onClick={() => endTest(-1)} className="button">
         Row Clicked: {rowSelected}
       </button>
     </div>
   );
 };
 
-export default Home;
+export default Instructions;
