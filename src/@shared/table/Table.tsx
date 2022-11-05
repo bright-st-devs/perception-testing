@@ -1,14 +1,16 @@
+import { AppProps } from "next/app";
 import React from "react";
 import { useStopwatch } from "react-timer-hook";
 import { pad } from "../functions/time";
+import { TestDatum } from "../tests/TestData";
 import Results from "./Results";
 
-export type Row = {
-  button: string;
-  colours: string[];
-};
+interface TableProps {
+  testDatum: TestDatum;
+  testId: number;
+}
 
-function Table(props: any) {
+function Table(props: AppProps & TableProps) {
   const [rowSelected, setRowSelected] = React.useState(-1);
   const [startTime, setStartTime] = React.useState(Date.now());
   const [endTime, setEndTime] = React.useState(0);
@@ -34,13 +36,13 @@ function Table(props: any) {
       </p>
       <table>
         <tbody>
-          {props.tableData.map((row: Row, i: number) => (
+          {props.testDatum.colours.map((row: string[], i: number) => (
             <tr key={i}>
               <td>
                 {/* We want to use 1-based rows for the users so we use i+1 */}
                 <button onClick={() => endTest(i + 1)}>Select row {i+1}</button>
               </td>
-              {row.colours.map((colour: string, j: number) => (
+              {row.map((colour: string, j: number) => (
                 <td key={j}>
                   <span style={{ color: colour }}>x </span>
                 </td>
@@ -58,8 +60,8 @@ function Table(props: any) {
           startTime={startTime}
           endTime={endTime}
           rowSelected={rowSelected}
-          correctRow={props.correctRow}
-          nextPage={props.nextPage}
+          correctRow={props.testDatum.correctRow}
+          nextTestId={props.testId + 1}
         />
       ) : null}
     </div>

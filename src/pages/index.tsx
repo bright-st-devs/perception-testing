@@ -8,7 +8,7 @@ import Table from "../@shared/table/Table";
 const Instructions: NextPage = () => {
   function begin() {
     // TODO: add entry in database
-    window.location.href='test1';
+    window.location.href='test?id=1';
   }
 
   return (
