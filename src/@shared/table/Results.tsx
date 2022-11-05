@@ -1,4 +1,3 @@
-import { AppProps } from "next/app";
 import React from "react";
 import { msToTime } from "../functions/time";
 
@@ -10,7 +9,7 @@ interface ResultsProps {
   nextTestId: number;
 }
 
-function Results(props: AppProps & ResultsProps) {
+function Results(props: ResultsProps) {
   const duration = props.endTime - props.startTime;
   const rowString =
     props.rowSelected < 1

@@ -1,4 +1,3 @@
-import { AppProps } from "next/app";
 import React from "react";
 import { useStopwatch } from "react-timer-hook";
 import { pad } from "../functions/time";
@@ -10,7 +9,7 @@ interface TableProps {
   testId: number;
 }
 
-function Table(props: AppProps & TableProps) {
+function Table(props: TableProps) {
   const [rowSelected, setRowSelected] = React.useState(-1);
   const [startTime, setStartTime] = React.useState(Date.now());
   const [endTime, setEndTime] = React.useState(0);
