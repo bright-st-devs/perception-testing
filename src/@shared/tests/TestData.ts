@@ -13,6 +13,12 @@ export const testData: TestDatum[] = [
       ["black","black","black","black","black","black","black","black","black",],
       ["black","black","black","black","black","black","red","black","black",],
       ["black","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","black","black","black","black","black",],
     ],
   },
   // Test 2
