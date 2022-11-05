@@ -17,7 +17,7 @@ function Results(props: {
 
   function nextTest() {
     if (props.testId < testData.length) { // testId is 1-bases so this is right
-      window.location.href = "test?id=" + props.testId + 1;
+      window.location.href = "test?id=" + String(props.testId + 1);
     }
     else {
       window.location.href = "demographics";

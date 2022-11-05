@@ -25,4 +25,14 @@ export const testData: TestDatum[] = [
       ["black","black","black","black","black","black","black","black","black",],
     ],
   },
+  // Test 3
+  {
+    instructions: "TODO: Add instructions",
+    correctRow: 1,
+    colours: [
+      ["red","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","black","black","black","black","black",],
+    ],
+  },
 ]

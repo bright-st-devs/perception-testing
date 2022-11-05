@@ -10,7 +10,7 @@ const Index: NextPage = () => {
   return (
     <div className="index">
       <h1>Allie&apos;s Science Fair</h1>
-      <p>Welcome to my science fair. Details go here.</p>
+      <p>Welcome to my science fair. TODO: add details</p>
       <input type="button" onClick={begin} value="Begin" />
     </div>
   );
