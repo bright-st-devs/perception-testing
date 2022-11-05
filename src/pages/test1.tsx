@@ -20,7 +20,7 @@ const tableData: Row[] = [
     colours: ["black","black","black","black","black","black","black","black","black",],
   },
 ];
-const correctRow: number = 1
+const correctRow: number = 2
 
 const Instructions: NextPage = () => {
   const [showTest, setShowTest] = React.useState(false);

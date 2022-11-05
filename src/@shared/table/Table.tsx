@@ -1,6 +1,7 @@
-import type { NextPage } from "next";
 import React from "react";
-import { useStopwatch } from 'react-timer-hook';
+import { useStopwatch } from "react-timer-hook";
+import { pad } from "../functions/time";
+import Results from "./Results";
 
 export type Row = {
   button: string;
@@ -8,52 +9,59 @@ export type Row = {
 };
 
 function Table(props: any) {
-  const [rowSelected, setRow] = React.useState(-2);
-  // const [startTime, setStartTime] = React.useState(time);
+  const [rowSelected, setRowSelected] = React.useState(-1);
+  const [startTime, setStartTime] = React.useState(Date.now());
   const [endTime, setEndTime] = React.useState(0);
-  const [isPaused, setIsPaused] = React.useState(false);
-  const {
-    seconds,
-    minutes,
-    hours,
-    days,
-    isRunning,
-    start,
-    pause,
-    reset,
-  } = useStopwatch({ autoStart: true });
+  const [testComplete, setTestComplete] = React.useState(false);
+  const { seconds, minutes, hours, days, isRunning, start, pause, reset } =
+    useStopwatch({ autoStart: true });
 
   function endTest(row: number) {
-    console.log("test ended");
-    setRow(row);
-    setEndTime(0); // TODO: how do I get the current time
-    pause();
-    // TODO: save time to database
-    // TOOD: if row === props.correctRow
-    // window.location.href=props.nextPage;
+    if (!testComplete) {
+      setRowSelected(row);
+      pause();
+      setEndTime(Date.now());
+      setTestComplete(true);
+      // TODO: save time to database
+    }
   }
 
   return (
     // <div className={styles.container}>
     <div className="test">
-      <div>
-        <span>{minutes}</span>:<span>{seconds}</span>
-      </div>
+      <p>
+        {pad(minutes)}:{pad(seconds)}
+      </p>
       <table>
         <tbody>
           {props.tableData.map((row: Row, i: number) => (
             <tr key={i}>
-              <td><button onClick={() => endTest(i)}>Select</button></td>
+              <td>
+                {/* We want to use 1-based rows for the users so we use i+1 */}
+                <button onClick={() => endTest(i + 1)}>Select row {i+1}</button>
+              </td>
               {row.colours.map((colour: string, j: number) => (
-                <td key={j}><span style={{color: colour}}>x </span></td>
+                <td key={j}>
+                  <span style={{ color: colour }}>x </span>
+                </td>
               ))}
             </tr>
           ))}
         </tbody>
       </table>
-      <button onClick={() => endTest(-1)} className="button">
-        Row Clicked: {rowSelected}
+      <button onClick={() => endTest(0)} className="button">
+        None of the above
       </button>
+
+      {testComplete ? (
+        <Results
+          startTime={startTime}
+          endTime={endTime}
+          rowSelected={rowSelected}
+          correctRow={props.correctRow}
+          nextPage={props.nextPage}
+        />
+      ) : null}
     </div>
   );
 }
