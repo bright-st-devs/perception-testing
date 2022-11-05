@@ -1,15 +1,13 @@
 import React from "react";
 import { msToTime } from "../functions/time";
 
-interface ResultsProps {
+function Results(props: {
   startTime: number;
   endTime: number;
   rowSelected: number;
   correctRow: number;
   nextTestId: number;
-}
-
-function Results(props: ResultsProps) {
+}) {
   const duration = props.endTime - props.startTime;
   const rowString =
     props.rowSelected < 1
@@ -17,7 +15,7 @@ function Results(props: ResultsProps) {
       : "row " + props.rowSelected + "";
 
   function nextTest() {
-    window.location.href='test?id=' + props.nextTestId;
+    window.location.href = "test?id=" + props.nextTestId;
   }
 
   return (

@@ -4,12 +4,7 @@ import { pad } from "../functions/time";
 import { TestDatum } from "../tests/TestData";
 import Results from "./Results";
 
-interface TableProps {
-  testDatum: TestDatum;
-  testId: number;
-}
-
-function Table(props: TableProps) {
+function Table(props: { testDatum: TestDatum; testId: number }) {
   const [rowSelected, setRowSelected] = React.useState(-1);
   const [startTime, setStartTime] = React.useState(Date.now());
   const [endTime, setEndTime] = React.useState(0);
@@ -39,7 +34,9 @@ function Table(props: TableProps) {
             <tr key={i}>
               <td>
                 {/* We want to use 1-based rows for the users so we use i+1 */}
-                <button onClick={() => endTest(i + 1)}>Select row {i+1}</button>
+                <button onClick={() => endTest(i + 1)}>
+                  Select row {i + 1}
+                </button>
               </td>
               {row.map((colour: string, j: number) => (
                 <td key={j}>
