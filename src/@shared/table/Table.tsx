@@ -57,7 +57,7 @@ function Table(props: { testDatum: TestDatum; testId: number }) {
           endTime={endTime}
           rowSelected={rowSelected}
           correctRow={props.testDatum.correctRow}
-          nextTestId={props.testId + 1}
+          testId={props.testId}
         />
       ) : null}
     </div>

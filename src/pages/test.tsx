@@ -5,7 +5,7 @@ import React from "react";
 import Table from "../@shared/table/Table";
 import { testData, TestDatum } from "../@shared/tests/TestData";
 
-const TestPage: NextPage = (props) => {
+const TestPage: NextPage = () => {
   const [showTest, setShowTest] = React.useState(false);
   const router = useRouter();
   const testId = Number(router.query.id);

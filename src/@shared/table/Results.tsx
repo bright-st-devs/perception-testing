@@ -1,12 +1,13 @@
 import React from "react";
 import { msToTime } from "../functions/time";
+import { testData } from "../tests/TestData";
 
 function Results(props: {
   startTime: number;
   endTime: number;
   rowSelected: number;
   correctRow: number;
-  nextTestId: number;
+  testId: number;
 }) {
   const duration = props.endTime - props.startTime;
   const rowString =
@@ -15,7 +16,12 @@ function Results(props: {
       : "row " + props.rowSelected + "";
 
   function nextTest() {
-    window.location.href = "test?id=" + props.nextTestId;
+    if (props.testId < testData.length) { // testId is 1-bases so this is right
+      window.location.href = "test?id=" + props.testId + 1;
+    }
+    else {
+      window.location.href = "demographics";
+    }
   }
 
   return (
