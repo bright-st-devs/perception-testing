@@ -8,9 +8,12 @@ import { testData, TestDatum } from "../@shared/tests/TestData";
 const TestPage: NextPage = () => {
   const [showTest, setShowTest] = React.useState(false);
   const router = useRouter();
-  const testId = Number(router.query.id);
+  const testId = Math.max(
+    1,
+    Math.min(testData.length, Number(router.query.id))
+  );
 
-  // TODO: handle when testId is less than 1 or bigger than length
+  // TODO: why does this take a while to load? It's null first. Is it something to do with router?
   const testDatum: TestDatum = testData[testId - 1];
   // console.log(testId)
   // console.log(testDatum)
