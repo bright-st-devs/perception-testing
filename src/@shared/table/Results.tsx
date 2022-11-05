@@ -1,12 +1,16 @@
+import { AppProps } from "next/app";
 import React from "react";
 import { msToTime } from "../functions/time";
 
-export type Row = {
-  button: string;
-  colours: string[];
-};
+interface ResultsProps {
+  startTime: number;
+  endTime: number;
+  rowSelected: number;
+  correctRow: number;
+  nextTestId: number;
+}
 
-function Results(props: any) {
+function Results(props: AppProps & ResultsProps) {
   const duration = props.endTime - props.startTime;
   const rowString =
     props.rowSelected < 1
@@ -14,7 +18,7 @@ function Results(props: any) {
       : "row " + props.rowSelected + "";
 
   function nextTest() {
-    window.location.href = props.nextPage;
+    window.location.href='test?id=' + props.nextTestId;
   }
 
   return (
