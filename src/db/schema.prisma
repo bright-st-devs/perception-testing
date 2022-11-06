@@ -1,10 +1,12 @@
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
 model TestResult {
@@ -13,6 +15,7 @@ model TestResult {
   ip        String
   useragent String // https://www.npmjs.com/package/next-useragent
   tests     Test[]
+  demographics String?
 }
 
 model Test {
