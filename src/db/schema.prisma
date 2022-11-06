@@ -1,0 +1,26 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model TestResult {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  ip        String
+  useragent String // https://www.npmjs.com/package/next-useragent
+  tests     Test[]
+}
+
+model Test {
+  id           Int         @id @default(autoincrement())
+  createdAt    DateTime    @default(now())
+  testId       Int
+  correct      Boolean
+  duration     Int
+  TestResult   TestResult? @relation(fields: [testResultId], references: [id])
+  testResultId Int?
+}
