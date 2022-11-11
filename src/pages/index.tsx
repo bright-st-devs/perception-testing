@@ -2,15 +2,31 @@ import type { NextPage } from "next";
 import React from "react";
 import axios from "axios";
 import { BeginReqBody } from "./api/begin";
+import { getIp } from "../@shared/functions/ip";
 
-const Index: NextPage = (props) => {
+interface Props {
+  ip: string;
+  useragent: string;
+}
+
+export async function getServerSideProps(context: any) {
+  const ip = getIp(context.req);
+  const useragent = context.req.headers["user-agent"];
+  return {
+    props: {
+      ip,
+      useragent,
+    },
+  };
+}
+
+const Index: NextPage<Props> = (props) => {
   async function begin() {
-    console.log(props);
     const req: BeginReqBody = {
-      ip: "0.0.0.0",
-      useragent: "TODO",
+      ip: props.ip,
+      useragent: props.useragent,
     };
-    await axios.post("/api/begin", req);
+    var res = await axios.post("/api/begin", req);
     window.location.href='test?id=1';
   }
 

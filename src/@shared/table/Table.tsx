@@ -3,8 +3,15 @@ import { useStopwatch } from "react-timer-hook";
 import { pad } from "../functions/time";
 import { TestDatum } from "../tests/TestData";
 import Results from "./Results";
+import { TestReqBody } from "../../pages/api/test";
+import axios from "axios";
 
-function Table(props: { testDatum: TestDatum; testId: number }) {
+function Table(props: {
+  ip: string;
+  useragent: string;
+  testDatum: TestDatum;
+  testId: number;
+}) {
   const [rowSelected, setRowSelected] = React.useState(-1);
   const [startTime, setStartTime] = React.useState(Date.now());
   const [endTime, setEndTime] = React.useState(0);
@@ -12,13 +19,24 @@ function Table(props: { testDatum: TestDatum; testId: number }) {
   const { seconds, minutes, hours, days, isRunning, start, pause, reset } =
     useStopwatch({ autoStart: true });
 
-  function endTest(row: number) {
+  async function endTest(row: number) {
     if (!testComplete) {
+      var localEndTime = Date.now()
       setRowSelected(row);
       pause();
-      setEndTime(Date.now());
+      setEndTime(localEndTime);
+
+      const req: TestReqBody = {
+        ip: props.ip,
+        useragent: props.useragent,
+        testId: props.testId,
+        correct: row === props.testDatum.correctRow,
+        duration: localEndTime - startTime,
+      };
+      console.log(req);
+      await axios.post("/api/test", req);
+
       setTestComplete(true);
-      // TODO: save time to database
     }
   }
 
