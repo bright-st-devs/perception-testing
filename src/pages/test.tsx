@@ -4,8 +4,25 @@ import styles from "../styles/Home.module.css";
 import React from "react";
 import Table from "../@shared/table/Table";
 import { testData, TestDatum } from "../@shared/tests/TestData";
+import { getIp } from "../@shared/functions/ip";
 
-const TestPage: NextPage = () => {
+interface Props {
+  ip: string;
+  useragent: string;
+}
+
+export async function getServerSideProps(context: any) {
+  const ip = getIp(context.req);
+  const useragent = context.req.headers["user-agent"];
+  return {
+    props: {
+      ip,
+      useragent,
+    },
+  };
+}
+
+const TestPage: NextPage<Props> = (props) => {
   const [showTest, setShowTest] = React.useState(false);
   const router = useRouter();
   const testId = Math.max(
@@ -26,7 +43,14 @@ const TestPage: NextPage = () => {
         Start Test
       </button>
 
-      {showTest ? <Table testDatum={testDatum} testId={testId} /> : null}
+      {showTest ? (
+        <Table
+          ip={props.ip}
+          useragent={props.useragent}
+          testDatum={testDatum}
+          testId={testId}
+        />
+      ) : null}
     </div>
   );
 };

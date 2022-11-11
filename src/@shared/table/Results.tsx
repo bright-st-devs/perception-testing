@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { msToTime } from "../functions/time";
 import { testData } from "../tests/TestData";
@@ -15,7 +16,7 @@ function Results(props: {
       ? "'None of the above'"
       : "row " + props.rowSelected + "";
 
-  function nextTest() {
+  async function nextTest() {
     if (props.testId < testData.length) { // testId is 1-bases so this is right
       window.location.href = "test?id=" + String(props.testId + 1);
     }
