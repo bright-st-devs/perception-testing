@@ -7,10 +7,10 @@ export type TestDatum = {
 export const testData: TestDatum[] = [
   // Test 1
   {
-    instructions: "TODO: Add instructions",
+    instructions: " Select the row with the red X.",
     correctRow: 2,
     colours: [
-      ["black","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","black","black","black","black","black"],
       ["black","black","black","black","black","black","red","black","black",],
       ["black","black","black","black","black","black","black","black","black",],
       ["black","black","black","black","black","black","black","black","black",],
@@ -23,9 +23,13 @@ export const testData: TestDatum[] = [
   },
   // Test 2
   {
-    instructions: "TODO: Add instructions",
+    instructions: " Select the row with the red X ",
     correctRow: 0,
     colours: [
+      ["black","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","black","black","black","black","black",],
       ["black","black","black","black","black","black","black","black","black",],
       ["black","black","black","black","black","black","black","black","black",],
       ["black","black","black","black","black","black","black","black","black",],
@@ -33,12 +37,19 @@ export const testData: TestDatum[] = [
   },
   // Test 3
   {
-    instructions: "TODO: Add instructions",
-    correctRow: 1,
+    instructions: " Select the row with three X's ",
+    correctRow: 6,
     colours: [
-      ["red","black","black","black","black","black","black","black","black",],
-      ["black","black","black","black","black","black","black","black","black",],
-      ["black","black","black","black","black","black","black","black","black",],
+      ["red","black","black","red","black","black","red","black","black","black","red","black","black","black",],
+      ["black","red","black","red","black","black","black","red","black","black","red","black","black","black",],
+      ["black","black","black","black","red","black","black","black","red","black","black","black","black","black",],
+      ["black","red","black","black","black","black","red","black","black","black","black","red","black","red",],
+      ["black","black","red","black","black","red","black","red","black","black","red","black","black","black",],
+      ["black","red","black","red","black","black","black","black","black","red","black","black","black","black",],
+      ["red","black","black","red","black","black","black","red","black","red","black","black","black","red",],
+      ["black","black","black","black","black","red","black","black","black","black","black","black","black","black",],
+      ["black","black","black","black","red","black","black","black","black","black","black","black","red","black",],
+
     ],
   },
 ]
