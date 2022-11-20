@@ -1,4 +1,4 @@
-import { Test, TestUser } from "@prisma/client";
+import { AgeRange, Demographics, Gender, Test, TestUser } from "@prisma/client";
 import prisma from "./prisma";
 
 export async function createTestUser(
@@ -45,6 +45,31 @@ export async function addTest(
       testId: testId,
       correct: correct,
       durationMs: duration,
+      testUserId: testUser.id,
+    }
+  })
+}
+
+export async function addDemographics(
+  ip: string,
+  useragent: string,
+  ageRange: AgeRange,
+  gender: Gender,
+): Promise<Demographics | null> {
+  var testUser = await prisma.testUser.findFirst({
+    where: {
+      ip: ip,
+      useragent: useragent,
+    },
+    select: {
+      id: true,
+    }
+  });
+
+  return prisma.demographics.create({
+    data: {
+      ageRange: ageRange,
+      gender: gender,
       testUserId: testUser.id,
     }
   })

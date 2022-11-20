@@ -8,7 +8,6 @@ declare global {
 
 let prisma: PrismaClient;
 
-console.log(typeof window)
 if (typeof window === "undefined") {
   if (process.env.VERCEL_ENV === "development") {
     if (!global.prisma) {

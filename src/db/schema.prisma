@@ -15,7 +15,7 @@ model TestUser {
   ip           String
   useragent    String // https://www.npmjs.com/package/next-useragent
   tests        Test[]
-  demographics String?
+  demographics Demographics[]
 }
 
 model Test {
@@ -26,4 +26,31 @@ model Test {
   durationMs Int
   TestUser   TestUser? @relation(fields: [testUserId], references: [id])
   testUserId Int?
+}
+
+model Demographics {
+  id         Int       @id @default(autoincrement())
+  createdAt  DateTime  @default(now())
+  ageRange   AgeRange?
+  gender     Gender?
+  TestUser   TestUser? @relation(fields: [testUserId], references: [id])
+  testUserId Int?
+}
+
+enum AgeRange {
+  UNDER_10
+  FROM_10_TO_15
+  FROM_16_TO_24
+  FROM_25_TO_34
+  FROM_35_TO_44
+  FROM_45_TO_54
+  FROM_55_TO_64
+  FROM_65_TO_74
+  OVER_74
+}
+
+enum Gender {
+  FEMALE
+  MALE
+  OTHER
 }

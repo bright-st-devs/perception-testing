@@ -33,7 +33,6 @@ function Table(props: {
         correct: row === props.testDatum.correctRow,
         duration: localEndTime - startTime,
       };
-      console.log(req);
       await axios.post("/api/test", req);
 
       setTestComplete(true);
