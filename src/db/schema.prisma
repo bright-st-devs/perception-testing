@@ -10,8 +10,8 @@ datasource db {
 }
 
 model TestUser {
-  id           Int      @id @default(autoincrement())
-  createdAt    DateTime @default(now())
+  id           Int            @id @default(autoincrement())
+  createdAt    DateTime       @default(now())
   ip           String
   useragent    String // https://www.npmjs.com/package/next-useragent
   tests        Test[]
@@ -29,12 +29,13 @@ model Test {
 }
 
 model Demographics {
-  id         Int       @id @default(autoincrement())
-  createdAt  DateTime  @default(now())
-  ageRange   AgeRange?
-  gender     Gender?
-  TestUser   TestUser? @relation(fields: [testUserId], references: [id])
-  testUserId Int?
+  id          Int          @id @default(autoincrement())
+  createdAt   DateTime     @default(now())
+  ageRange    AgeRange?
+  gender      Gender?
+  drivingTime DrivingTime?
+  TestUser    TestUser?    @relation(fields: [testUserId], references: [id])
+  testUserId  Int?
 }
 
 enum AgeRange {
@@ -53,4 +54,12 @@ enum Gender {
   FEMALE
   MALE
   OTHER
+}
+
+enum DrivingTime {
+  EVERY_DAY
+  FROM_3_TO_6_DAYS_A_WEEK
+  FROM_1_TO_2_DAYS_A_WEEK
+  OCCASIONALLY
+  NEVER
 }

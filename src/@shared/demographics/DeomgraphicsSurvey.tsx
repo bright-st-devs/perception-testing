@@ -14,6 +14,7 @@ function DeomgraphicsSurvey(props: { ip: string; useragent: string }) {
       useragent: props.useragent,
       ageRange: survey.data.ageRange,
       gender: survey.data.gender,
+      drivingTime: survey.data.drivingTime,
     };
     console.log(req);
     await axios.post("/api/demographics", req);

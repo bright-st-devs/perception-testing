@@ -1,4 +1,4 @@
-import { AgeRange, Gender } from "@prisma/client"
+import { AgeRange, DrivingTime, Gender } from "@prisma/client"
 
 export const DemographicsQuestions = {
   "pages": [
@@ -8,11 +8,11 @@ export const DemographicsQuestions = {
       "hideNumber": true,
       "type": "dropdown",
       "name": "ageRange",
-      "title": "Age Range",
+      "title": "What is your age range?",
       "choices": [
        {
         "value": AgeRange.UNDER_10,
-        "text": "Under 10 years old"
+        "text": "Under 10 years old",
        },
        {
         "value": AgeRange.FROM_10_TO_15,
@@ -52,7 +52,7 @@ export const DemographicsQuestions = {
       "hideNumber": true,
       "type": "dropdown",
       "name": "gender",
-      "title": "Gender",
+      "title": "What is your gender",
       "choices": [
        {
         "value": Gender.FEMALE,
@@ -67,7 +67,35 @@ export const DemographicsQuestions = {
         "text": "Other",
        },
       ]
-     }
+     },
+     {
+      "hideNumber": true,
+      "type": "dropdown",
+      "name": "drivingTime",
+      "title": "How often do you Drive?",
+      "choices": [
+       {
+        "value": DrivingTime.EVERY_DAY,
+        "text": "Every Day",
+       },
+       {
+        "value": DrivingTime.FROM_3_TO_6_DAYS_A_WEEK,
+        "text": "3-6 days per week",
+       },
+       {
+        "value": DrivingTime.FROM_1_TO_2_DAYS_A_WEEK,
+        "text": "1-2 days per week",
+       },
+       {
+        "value": DrivingTime.OCCASIONALLY,
+        "text": "Occasionally",
+       },
+       {
+        "value": DrivingTime.NEVER,
+        "text": "Never",
+       },
+      ]
+     },
     ]
    }
   ],
