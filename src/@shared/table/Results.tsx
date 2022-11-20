@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { msToTime } from "../functions/time";
 import { testData } from "../tests/TestData";
