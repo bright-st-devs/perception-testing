@@ -35,10 +35,14 @@ const TestPage: NextPage<Props> = (props) => {
   // console.log(testId)
   // console.log(testDatum)
 
+  var instructions = testDatum
+    ? "<p>" + testDatum.instructions + "</p>"
+    : "<p/>";
+
   return (
     <div className="main">
       <h1>Test {testId}</h1>
-      <p>{testDatum ? testDatum.instructions : null}</p>
+      <div dangerouslySetInnerHTML={{ __html: instructions }} />
       <button className={styles.button} onClick={() => setShowTest(true)}>
         Start Test
       </button>
