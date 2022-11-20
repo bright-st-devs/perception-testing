@@ -1,4 +1,4 @@
-import { AgeRange, Gender } from "@prisma/client";
+import { AgeRange, DrivingTime, Gender } from "@prisma/client";
 import { addDemographics } from "../../db/queries";
 
 export type DemographicsReqBody = {
@@ -6,12 +6,19 @@ export type DemographicsReqBody = {
   useragent: string;
   ageRange: AgeRange;
   gender: Gender;
+  drivingTime: DrivingTime;
 };
 
 export default async function handler(req: any, res: any) {
   try {
-    var { ip, useragent, ageRange, gender } = req.body;
-    var demographics = await addDemographics(ip, useragent, ageRange, gender);
+    var { ip, useragent, ageRange, gender, drivingTime } = req.body;
+    var demographics = await addDemographics(
+      ip,
+      useragent,
+      ageRange,
+      gender,
+      drivingTime
+    );
 
     res.status(200).json(demographics);
   } catch (err) {

@@ -1,4 +1,11 @@
-import { AgeRange, Demographics, Gender, Test, TestUser } from "@prisma/client";
+import {
+  AgeRange,
+  Demographics,
+  DrivingTime,
+  Gender,
+  Test,
+  TestUser,
+} from "@prisma/client";
 import prisma from "./prisma";
 
 export async function createTestUser(
@@ -37,7 +44,7 @@ export async function addTest(
     },
     select: {
       id: true,
-    }
+    },
   });
 
   return prisma.test.create({
@@ -46,8 +53,8 @@ export async function addTest(
       correct: correct,
       durationMs: duration,
       testUserId: testUser.id,
-    }
-  })
+    },
+  });
 }
 
 export async function addDemographics(
@@ -55,6 +62,7 @@ export async function addDemographics(
   useragent: string,
   ageRange: AgeRange,
   gender: Gender,
+  drivingTime: DrivingTime
 ): Promise<Demographics | null> {
   var testUser = await prisma.testUser.findFirst({
     where: {
@@ -63,14 +71,15 @@ export async function addDemographics(
     },
     select: {
       id: true,
-    }
+    },
   });
 
   return prisma.demographics.create({
     data: {
       ageRange: ageRange,
       gender: gender,
+      drivingTime: drivingTime,
       testUserId: testUser.id,
-    }
-  })
+    },
+  });
 }
