@@ -72,7 +72,7 @@ export const DemographicsQuestions = {
       "hideNumber": true,
       "type": "dropdown",
       "name": "drivingTime",
-      "title": "How often do you Drive?",
+      "title": "How often do you drive?",
       "choices": [
        {
         "value": DrivingTime.EVERY_DAY,
