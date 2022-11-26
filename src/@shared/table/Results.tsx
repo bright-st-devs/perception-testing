@@ -13,7 +13,7 @@ function Results(props: {
   const duration = props.endTime - props.startTime;
   const rowString =
     props.rowSelected < 1
-      ? "'None of the above'"
+      ? "'None'"
       : "row " + props.rowSelected + "";
 
   async function nextTest() {
