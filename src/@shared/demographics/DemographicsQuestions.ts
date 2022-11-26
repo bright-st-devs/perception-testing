@@ -88,7 +88,7 @@ export const DemographicsQuestions = {
        },
        {
         "value": DrivingTime.OCCASIONALLY,
-        "text": "Occasionally",
+        "text": "Rarely",
        },
        {
         "value": DrivingTime.NEVER,

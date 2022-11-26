@@ -33,7 +33,7 @@ const Demographics: NextPage<Props> = (props) => {
         To help with the analysis of the test results please complete a short
         demographics survey.
         <br />
-        All questions are optional and any imformation you provide will be quite
+        All questions are optional and any information you provide will be quite
         helpful.
       </p>
       <DeomgraphicsSurvey ip={props.ip} useragent={props.useragent} />
