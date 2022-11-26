@@ -5,6 +5,7 @@ import { TestDatum } from "../tests/TestData";
 import Results from "./Results";
 import { TestReqBody } from "../../pages/api/test";
 import axios from "axios";
+import styles from "../../styles/Home.module.css";
 
 function Table(props: {
   ip: string;
@@ -21,7 +22,7 @@ function Table(props: {
 
   async function endTest(row: number) {
     if (!testComplete) {
-      var localEndTime = Date.now()
+      var localEndTime = Date.now();
       setRowSelected(row);
       pause();
       setEndTime(localEndTime);
@@ -40,18 +41,20 @@ function Table(props: {
   }
 
   return (
-    // <div className={styles.container}>
-    <div className="test">
+    <div className={styles.test}>
       <p>
         {pad(minutes)}:{pad(seconds)}
       </p>
-      <table>
+      <table className={styles.table}>
         <tbody>
           {props.testDatum.colours.map((row: string[], i: number) => (
             <tr key={i}>
               <td>
                 {/* We want to use 1-based rows for the users so we use i+1 */}
-                <button onClick={() => endTest(i + 1)}>
+                <button
+                  className={styles.tbutton}
+                  onClick={() => endTest(i + 1)}
+                >
                   Select row {i + 1}
                 </button>
               </td>
@@ -62,11 +65,13 @@ function Table(props: {
               ))}
             </tr>
           ))}
+          <tr>
+            <button className={styles.tbutton} onClick={() => endTest(0)}>
+              Select None
+            </button>
+          </tr>
         </tbody>
       </table>
-      <button onClick={() => endTest(0)} className="button">
-        None of the above
-      </button>
 
       {testComplete ? (
         <Results

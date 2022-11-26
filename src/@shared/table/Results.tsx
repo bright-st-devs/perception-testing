@@ -1,6 +1,7 @@
 import React from "react";
 import { msToTime } from "../functions/time";
 import { testData } from "../tests/TestData";
+import styles from "../../styles/Home.module.css";
 
 function Results(props: {
   startTime: number;
@@ -25,7 +26,7 @@ function Results(props: {
   }
 
   return (
-    <div className="results">
+    <div className={styles.results}>
       {props.rowSelected === props.correctRow ? (
         <p>
           Congratulations! It took you {msToTime(duration)} to correctly select{" "}
@@ -37,7 +38,7 @@ function Results(props: {
           {rowString}.
         </p>
       )}
-      <button onClick={() => nextTest()} className="button">
+      <button className={styles.button} onClick={() => nextTest()}>
         Next Test
       </button>
     </div>

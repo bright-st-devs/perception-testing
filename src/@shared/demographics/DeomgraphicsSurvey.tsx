@@ -5,6 +5,7 @@ import * as Survey from "survey-react";
 import "survey-react/modern.min.css";
 import { DemographicsReqBody } from "../../pages/api/demographics";
 import { DemographicsQuestions } from "./DemographicsQuestions";
+import styles from "../../styles/Home.module.css";
 
 function DeomgraphicsSurvey(props: { ip: string; useragent: string }) {
   async function completeSurvey(survey: any, options: any) {
@@ -25,7 +26,17 @@ function DeomgraphicsSurvey(props: { ip: string; useragent: string }) {
   const survey = new Survey.Model(DemographicsQuestions);
   survey.onComplete.add(completeSurvey);
 
-  return <Survey.Survey model={survey} />;
+  return (
+    <table className={styles.table}>
+      <tr>
+        <td className={styles.survey_td}>
+          <div className={styles.survey}>
+            <Survey.Survey model={survey} />
+          </div>
+        </td>
+      </tr>
+    </table>
+  );
 }
 
 export default DeomgraphicsSurvey;

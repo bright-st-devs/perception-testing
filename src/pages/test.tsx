@@ -36,10 +36,10 @@ const TestPage: NextPage<Props> = (props) => {
   // console.log(testDatum)
 
   return (
-    <div className="instructions">
+    <div className="main">
       <h1>Test {testId}</h1>
       <p>{testDatum ? testDatum.instructions : null}</p>
-      <button onClick={() => setShowTest(true)} className="button">
+      <button className={styles.button} onClick={() => setShowTest(true)}>
         Start Test
       </button>
 

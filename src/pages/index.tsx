@@ -3,6 +3,7 @@ import React from "react";
 import axios from "axios";
 import { BeginReqBody } from "./api/begin";
 import { getIp } from "../@shared/functions/ip";
+import styles from "../styles/Home.module.css";
 
 interface Props {
   ip: string;
@@ -31,10 +32,10 @@ const Index: NextPage<Props> = (props) => {
   }
 
   return (
-    <div className="index">
+    <div className={styles.main}>
       <h1>Allie&apos;s Science Fair</h1>
       <p>Welcome to my science fair. TODO: add details</p>
-      <input type="button" onClick={begin} value="Begin" />
+      <input className={styles.button} type="button" onClick={begin} value="Begin" />
     </div>
   );
 };
