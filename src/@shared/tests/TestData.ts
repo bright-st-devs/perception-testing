@@ -133,7 +133,7 @@ export const testData: TestDatum[] = [
   },
   // Test 8
   {
-    instructions: " Select the row that is in between two rows that have a red " + x(red___) + " in between a green " + x(green_) + " and a purple " + x(purple),
+    instructions: " Select the row that has the sequence [red " + x(red___) + ", orange " + x(orange) + ", green " + x(green_) + ", purple " + x(purple) + "]",
     correctRow: 6,
     colours: [
       [red___, purple, black_, green_, orange, pink__, red___, black_, pink__, black_, red___, purple, orange, green_,],
@@ -150,7 +150,7 @@ export const testData: TestDatum[] = [
   },
   // Test 9
   {
-    instructions: " Select the row that is in between two rows that have a red " + x(red___) + " in between a green " + x(green_) + " and a purple " + x(purple),
+    instructions: " Select the row with no pink " + x(pink__) + "s",
     correctRow: 0,
     colours: [
       [orange, purple, black_, pink__, black_, green_, red___, orange, purple, black_, red___, purple, black_, green_,],
@@ -167,7 +167,7 @@ export const testData: TestDatum[] = [
   },
   // Test 10
   {
-    instructions: " Select the row that is in between two rows that have a red " + x(red___) + " in between a green " + x(green_) + " and a purple " + x(purple),
+    instructions: " Select the row with the most red  " + x(red___) + "s",
     correctRow: 2,
     colours: [
       [red___, pink__, black_, green_, black_, green_, red___, black_, purple, orange, red___, purple, black_, orange,],
