@@ -48,7 +48,7 @@ export const testData: TestDatum[] = [
   },
   // Test 3
   {
-    instructions: " Select the row with three red " + x(red___) + "'s ",
+    instructions: " Select the row with only three red " + x(red___) + "'s ",
     correctRow: 6,
     colours: [
       [red___, black_, black_, red___, black_, black_, red___, black_, black_, black_, red___, black_, black_, black_,],
@@ -174,7 +174,7 @@ export const testData: TestDatum[] = [
       [pink__, red___, green_, red___, orange, purple, black_, red___, pink__, black_, red___, orange, black_, green_,],
       [red___, pink__, green_, green_, red___, black_, purple, pink__, orange, black_, green_, black_, pink__, red___,],
       [black_, pink__, green_, black_, black_, green_, orange, purple, green_, black_, red___, red___, pink__, red___,],
-      [green_, black_, pink__, black_, purple, red___, black_, orange, red___, black_, red___, pink__, green_, red___,],
+      [green_, black_, pink__, black_, purple, orange, black_, orange, red___, black_, red___, pink__, green_, red___,],
       [black_, red___, pink__, red___, black_, orange, purple, black_, purple, red___, pink__, black_, green_, black_,],
       [orange, black_, green_, pink__, purple, black_, black_, pink__, black_, red___, black_, green_, black_, orange,],
       [purple, pink__, green_, red___, black_, orange, purple, black_, orange, red___, orange, purple, pink__, black_,],
