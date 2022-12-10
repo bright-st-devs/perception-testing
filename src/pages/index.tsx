@@ -35,7 +35,7 @@ const Index: NextPage<Props> = (props) => {
     <div className={styles.main}>
       <h1>Allie&apos;s Science Fair</h1>
       <p>Welcome to my science fair. My science fair is about why people see things and why they don&apos;t.
-        Also it is about what effects that. Before each test you will be presented with instructions.
+        Also it is about if a time crunch makes a difference on that result. Before each test you will be presented with instructions.
         Read them then click the button that says &quot;Begin&quot; to start. </p>
       <input className={styles.button} type="button" onClick={begin} value="Begin" />
     </div>
