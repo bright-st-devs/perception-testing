@@ -72,22 +72,22 @@ export const DemographicsQuestions = {
       "hideNumber": true,
       "type": "dropdown",
       "name": "drivingTime",
-      "title": "How often do you drive?",
+      "title": "How often do you perform a task that has a time crunch? For example, taking a test or hitting a deadline at work.",
       "choices": [
        {
         "value": DrivingTime.EVERY_DAY,
         "text": "Every Day",
        },
        {
-        "value": DrivingTime.FROM_3_TO_6_DAYS_A_WEEK,
-        "text": "3-6 days per week",
+        "value": DrivingTime.FROM_3_TO_6_TIMES_A_WEEK,
+        "text": "3-6 times per week",
        },
        {
-        "value": DrivingTime.FROM_1_TO_2_DAYS_A_WEEK,
-        "text": "1-2 days per week",
+        "value": DrivingTime.FROM_1_TO_2_TIMES_A_WEEK,
+        "text": "1-2 times per week",
        },
        {
-        "value": DrivingTime.OCCASIONALLY,
+        "value": DrivingTime.RARELY,
         "text": "Rarely",
        },
        {
