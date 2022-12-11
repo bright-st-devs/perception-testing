@@ -40,9 +40,11 @@ const Index: NextPage<Props> = (props) => {
         a difference on that result.
       </p>
       <p>
-        Before each test you will be presented with instructions. Read them then
-        click the button that says &quot;Start Test&quot; to start. Your
-        responses will be timed.
+        Before each test you will be presented with instructions. Read them carefully then
+        click the button that says &quot;Start Test&quot; to start.
+      </p>
+      <p>
+        Your responses will be timed.
       </p>
       <input
         className={styles.button}
