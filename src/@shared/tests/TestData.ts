@@ -1,3 +1,5 @@
+import styles from "../../styles/Home.module.css";
+
 export type TestDatum = {
   instructions: string;
   correctRow: number; // 1-based; 0 === 'none of the above'
@@ -13,6 +15,15 @@ var orange = "#d45a08";
 
 function x(colour: string): string {
   return "<span style=\"color: " + colour + "\">X</span>"
+}
+
+function pattern(colours: string[]): string {
+  var pattern = "<span class=pattern>"
+  colours.forEach(function (colour) {
+    pattern += x(colour)
+  });
+  pattern += "</span>"
+  return pattern
 }
 
 export const testData: TestDatum[] = [
@@ -65,7 +76,7 @@ export const testData: TestDatum[] = [
   },
   // Test 4
   {
-    instructions: " Select the row with a red " + x(red___) + " in between a pink " + x(pink__) + " and orange " + x(orange),
+    instructions: " Select the row with the pattern " + pattern([red___, pink__, orange]),
     correctRow: 0,
     colours: [
       [red___, pink__, black_, red___, orange, pink__, red___, black_, black_, green_, red___, black_, black_, pink__, red___, green_, black_, black_, orange, orange, black_, black_, pink__, black_, orange, black_, black_, red___, red___, green_, black_, pink__, black_, green_, black_,],
