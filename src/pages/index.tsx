@@ -28,16 +28,28 @@ const Index: NextPage<Props> = (props) => {
       useragent: props.useragent,
     };
     var res = await axios.post("/api/begin", req);
-    window.location.href='test?id=1';
+    window.location.href = "test?id=1";
   }
 
   return (
     <div className={styles.main}>
       <h1>Allie&apos;s Science Fair</h1>
-      <p>Welcome to my science fair. My science fair is about why people see things and why they don&apos;t.
-        Also it is about if a time crunch makes a difference on that result. Before each test you will be presented with instructions.
-        Read them then click the button that says &quot;Start Test&quot; to start. </p>
-      <input className={styles.button} type="button" onClick={begin} value="Begin" />
+      <p>
+        Welcome to my science fair. My science fair is about why people see
+        things and why they don&apos;t. Also it is about if a time crunch makes
+        a difference on that result.
+      </p>
+      <p>
+        Before each test you will be presented with instructions. Read them then
+        click the button that says &quot;Start Test&quot; to start. Your
+        responses will be timed.
+      </p>
+      <input
+        className={styles.button}
+        type="button"
+        onClick={begin}
+        value="Begin"
+      />
     </div>
   );
 };
