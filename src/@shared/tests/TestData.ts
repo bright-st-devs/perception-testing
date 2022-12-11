@@ -29,7 +29,7 @@ function pattern(colours: string[]): string {
 export const testData: TestDatum[] = [
   // Test 1
   {
-    instructions: " Select the row with the red " + x(red___),
+    instructions: " Select the row with the red " + pattern([red___]),
     correctRow: 2,
     colours: [
       [black_, black_, black_, black_, black_, black_, black_, black_, black_],
@@ -45,7 +45,7 @@ export const testData: TestDatum[] = [
   },
   // Test 2
   {
-    instructions: " Select the row with the red " + x(red___),
+    instructions: " Select the row with the red " + pattern([red___]),
     correctRow: 0,
     colours: [
       [black_, black_, black_, black_, black_, black_, black_, black_, black_,],
@@ -59,7 +59,7 @@ export const testData: TestDatum[] = [
   },
   // Test 3
   {
-    instructions: " Select the row with only three red " + x(red___) + "'s ",
+    instructions: " Select the row with only three red " + pattern([red___]) + "'s ",
     correctRow: 6,
     colours: [
       [red___, black_, black_, red___, black_, black_, red___, black_, black_, black_, red___, black_, black_, black_,],
@@ -93,13 +93,13 @@ export const testData: TestDatum[] = [
   },
   // Test 5
   {
-    instructions: " Select the row that is in between two rows that have a red " + x(red___) + " in between a green " + x(green_) + " and a purple " + x(purple),
+    instructions: " Select the row that is in between two rows that have the pattern " + pattern([purple, red___, green_]),
     correctRow: 5,
     colours: [
       [red___, purple, black_, green_, black_, green_, red___, black_, purple, black_, red___, purple, black_, green_,],
       [green_, red___, green_, red___, black_, purple, black_, red___, green_, black_, red___, red___, black_, green_,],
       [red___, black_, green_, green_, red___, black_, purple, black_, red___, black_, green_, black_, purple, red___,],
-      [black_, red___, green_, black_, black_, green_, red___, purple, green_, black_, red___, red___, purple, red___,],
+      [black_, red___, green_, black_, black_, purple, red___, green_, green_, black_, red___, red___, purple, red___,],
       [green_, black_, red___, black_, purple, red___, black_, red___, red___, black_, red___, purple, green_, black_,],
       [black_, red___, green_, red___, black_, black_, purple, black_, purple, red___, green_, black_, green_, black_,],
       [red___, black_, green_, red___, purple, black_, black_, red___, black_, red___, black_, green_, black_, red___,],
@@ -110,7 +110,7 @@ export const testData: TestDatum[] = [
   },
   // Test 6
   {
-    instructions: " Select the row that has no red " + x(red___),
+    instructions: " Select the row that has no red " + pattern([red___]) + "'s",
     correctRow: 3,
     colours: [
       [purple, red___, black_, green_, pink__, green_, orange, black_, black_, green_, orange, purple, pink__, green_,],
@@ -127,7 +127,7 @@ export const testData: TestDatum[] = [
   },
   // Test 7
   {
-    instructions: " Select the row has 2 red " + x(red___) + "s 4 green " + x(green_) + "s and 1 pink " + x(pink__),
+    instructions: " Select the row has 2 red " + pattern([red___]) + "'s 4 green " + pattern([green_]) + "'s and 1 pink " + pattern([pink__]),
     correctRow: 8,
     colours: [
       [red___, purple, orange, green_, black_, pink__, red___, black_, purple, black_, pink__, purple, black_, green_,],
@@ -144,7 +144,7 @@ export const testData: TestDatum[] = [
   },
   // Test 8
   {
-    instructions: " Select the row that has the sequence [red " + x(red___) + ", orange " + x(orange) + ", green " + x(green_) + ", purple " + x(purple) + "]",
+    instructions: " Select the row that has the pattern " + pattern([red___, orange, green_, purple]),
     correctRow: 6,
     colours: [
       [red___, purple, black_, green_, orange, pink__, red___, black_, pink__, black_, red___, purple, orange, green_,],
@@ -161,7 +161,7 @@ export const testData: TestDatum[] = [
   },
   // Test 9
   {
-    instructions: " Select the row with no pink " + x(pink__) + "s",
+    instructions: " Select the row with no pink " + pattern([pink__]) + "'s",
     correctRow: 0,
     colours: [
       [orange, purple, black_, pink__, black_, green_, red___, orange, purple, black_, red___, purple, black_, green_,],
@@ -178,7 +178,7 @@ export const testData: TestDatum[] = [
   },
   // Test 10
   {
-    instructions: " Select the row with the most red  " + x(red___) + "s",
+    instructions: " Select the row with the most red  " + pattern([red___]) + "'s",
     correctRow: 2,
     colours: [
       [red___, pink__, black_, green_, black_, green_, red___, black_, purple, orange, red___, purple, black_, orange,],
