@@ -76,7 +76,7 @@ export const testData: TestDatum[] = [
   },
   // Test 4
   {
-    instructions: " Select the row with the pattern " + pattern([red___, pink__, orange]),
+    instructions: " Select the row with the pattern [red, pink, orange]: (" + pattern([red___, pink__, orange]) + ")",
     correctRow: 0,
     colours: [
       [red___, pink__, black_, red___, orange, pink__, red___, black_, black_, green_, red___, black_, black_, pink__, red___, green_, black_, black_, orange, orange, black_, black_, pink__, black_, orange, black_, black_, red___, red___, green_, black_, pink__, black_, green_, black_,],
@@ -93,7 +93,7 @@ export const testData: TestDatum[] = [
   },
   // Test 5
   {
-    instructions: " Select the row that is in between two rows that have the pattern " + pattern([purple, red___, green_]),
+    instructions: " Select the row that is in between two rows that have the pattern [purple, red, green]: (" + pattern([purple, red___, green_]) + ")",
     correctRow: 5,
     colours: [
       [red___, purple, black_, green_, black_, green_, red___, black_, purple, black_, red___, purple, black_, green_,],
@@ -127,7 +127,7 @@ export const testData: TestDatum[] = [
   },
   // Test 7
   {
-    instructions: " Select the row has 2 red " + pattern([red___]) + "'s 4 green " + pattern([green_]) + "'s and 1 pink " + pattern([pink__]),
+    instructions: " Select the row that has 2 red " + pattern([red___]) + "'s 4 green " + pattern([green_]) + "'s and 1 pink " + pattern([pink__]),
     correctRow: 8,
     colours: [
       [red___, purple, orange, green_, black_, pink__, red___, black_, purple, black_, pink__, purple, black_, green_,],
@@ -144,7 +144,7 @@ export const testData: TestDatum[] = [
   },
   // Test 8
   {
-    instructions: " Select the row that has the pattern " + pattern([red___, orange, green_, purple]),
+    instructions: " Select the row that has the pattern [red, orange, green, purple]: (" + pattern([red___, orange, green_, purple]) + ")",
     correctRow: 6,
     colours: [
       [red___, purple, black_, green_, orange, pink__, red___, black_, pink__, black_, red___, purple, orange, green_,],
