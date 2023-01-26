@@ -30,21 +30,26 @@ const Index: NextPage<Props> = (props) => {
     var res = await axios.post("/api/begin", req);
     window.location.href = "test?id=1";
   }
+  const displayTimer = Boolean(process.env.displayTimer);
 
   return (
     <div className={styles.main}>
       <h1>Allie&apos;s Science Fair</h1>
       <p>
         Welcome to my science fair! My science fair is about why people see
-        things and why they don&apos;t. Also it is about if a time crunch makes
-        a difference on that result.
+        things and why they don&apos;t.
+        {displayTimer
+          ? " Also it is about if a time crunch makes a difference on that result."
+          : ""}
       </p>
       <p>
-        Before each test you will be presented with instructions. Read them carefully then
-        click the button that says &quot;Start Test&quot; to start.
+        Before each test you will be presented with instructions. Read them
+        carefully then click the button that says &quot;Start Test&quot; to
+        start.
       </p>
       <p>
-        There are 10 test questions and your responses will be timed.
+        There are 10 test questions
+        {displayTimer ? " and your responses will be timed." : "."}
       </p>
       <input
         className={styles.button}

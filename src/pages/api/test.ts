@@ -6,12 +6,20 @@ export type TestReqBody = {
   testId: number;
   correct: boolean;
   duration: number;
+  timerDisplayed: boolean;
 };
 
 export default async function handler(req: any, res: any) {
   try {
-    var { ip, useragent, testId, correct, duration } = req.body;
-    var test = await addTest(ip, useragent, testId, correct, duration);
+    var { ip, useragent, testId, correct, duration, timerDisplayed } = req.body;
+    var test = await addTest(
+      ip,
+      useragent,
+      testId,
+      correct,
+      duration,
+      timerDisplayed
+    );
 
     res.status(200).json(test);
   } catch (err) {
