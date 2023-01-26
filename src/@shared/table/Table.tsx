@@ -17,6 +17,7 @@ function Table(props: {
   const [startTime, setStartTime] = React.useState(Date.now());
   const [endTime, setEndTime] = React.useState(0);
   const [testComplete, setTestComplete] = React.useState(false);
+  const displayTimer = Boolean(process.env.displayTimer);
   const { seconds, minutes, hours, days, isRunning, start, pause, reset } =
     useStopwatch({ autoStart: true });
 
@@ -33,6 +34,7 @@ function Table(props: {
         testId: props.testId,
         correct: row === props.testDatum.correctRow,
         duration: localEndTime - startTime,
+        timerDisplayed: displayTimer,
       };
       await axios.post("/api/test", req);
 
@@ -42,9 +44,7 @@ function Table(props: {
 
   return (
     <div className={styles.test}>
-      <p>
-        {pad(minutes)}:{pad(seconds)}
-      </p>
+      <p>{displayTimer ? pad(minutes) + ":" + pad(seconds) + " " : null}</p>
       <table className={styles.table}>
         <tbody>
           {props.testDatum.colours.map((row: string[], i: number) => (
@@ -66,9 +66,11 @@ function Table(props: {
             </tr>
           ))}
           <tr>
-            <button className={styles.tbutton} onClick={() => endTest(0)}>
-              Select None
-            </button>
+            <td>
+              <button className={styles.tbutton} onClick={() => endTest(0)}>
+                Select None
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

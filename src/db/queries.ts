@@ -35,7 +35,8 @@ export async function addTest(
   useragent: string,
   testId: number,
   correct: boolean,
-  duration: number
+  duration: number,
+  timerDisplayed: boolean
 ): Promise<Test | null> {
   var testUser = await prisma.testUser.findFirst({
     where: {
@@ -52,6 +53,7 @@ export async function addTest(
       testId: testId,
       correct: correct,
       durationMs: duration,
+      timerDisplayed: timerDisplayed,
       testUserId: testUser.id,
     },
   });

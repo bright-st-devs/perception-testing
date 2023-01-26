@@ -11,16 +11,15 @@ function Results(props: {
   testId: number;
 }) {
   const duration = props.endTime - props.startTime;
+  const displayTimer = Boolean(process.env.displayTimer);
   const rowString =
-    props.rowSelected < 1
-      ? "'None'"
-      : "row " + props.rowSelected + "";
+    props.rowSelected < 1 ? "'None'" : "row " + props.rowSelected + "";
 
   async function nextTest() {
-    if (props.testId < testData.length) { // testId is 1-bases so this is right
+    // testId is 1-bases so this is right
+    if (props.testId < testData.length) {
       window.location.href = "test?id=" + String(props.testId + 1);
-    }
-    else {
+    } else {
       window.location.href = "demographics";
     }
   }
@@ -29,13 +28,13 @@ function Results(props: {
     <div className={styles.results}>
       {props.rowSelected === props.correctRow ? (
         <p>
-          Congratulations! It took you {msToTime(duration)} to correctly select{" "}
-          {rowString}.
+          Congratulations! You correctly selected {rowString}.
+          {displayTimer ? " It took you "+msToTime(duration)+"." : ""}
         </p>
       ) : (
         <p>
-          Unfortunately, it took you {msToTime(duration)} to incorrectly select{" "}
-          {rowString}.
+          Unfortunately, you incorrectly selected {rowString}.
+          {displayTimer ? " It took you "+msToTime(duration)+"." : ""}
         </p>
       )}
       <button className={styles.button} onClick={() => nextTest()}>

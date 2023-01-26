@@ -19,13 +19,14 @@ model TestUser {
 }
 
 model Test {
-  id         Int       @id @default(autoincrement())
-  createdAt  DateTime  @default(now())
-  testId     Int
-  correct    Boolean
-  durationMs Int
-  TestUser   TestUser? @relation(fields: [testUserId], references: [id])
-  testUserId Int?
+  id             Int       @id @default(autoincrement())
+  createdAt      DateTime  @default(now())
+  testId         Int
+  correct        Boolean
+  durationMs     Int
+  timerDisplayed Boolean   @default(true)
+  TestUser       TestUser? @relation(fields: [testUserId], references: [id])
+  testUserId     Int?
 }
 
 model Demographics {
